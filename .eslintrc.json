@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "@meu-kit/eslint-config/node/node",
+    "plugin:vitest-globals/recommended"
+  ],
+  "rules": {},
+  "env": {
+    "vitest-globals/env": true
+  }
+}
