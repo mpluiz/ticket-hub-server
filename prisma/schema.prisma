@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Ticket {
+  id          String    @id @default(uuid())
+  name        String
+  description String
+  imageUrl    String    @map("image_url")
+  amenities   String[]
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime? @updatedAt @map("updated_at")
+
+  cartItem CartItem[]
+  review   Review[]
+  price    Price?
+  address  Address?
+
+  @@map("tickets")
+}
+
+model Cart {
+  id        String    @id @default(uuid())
+  total     Decimal   @db.Decimal(10, 2)
+  subTotal  Decimal   @map("sub_total") @db.Decimal(10, 2)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  cartItem CartItem[]
+
+  @@map("carts")
+}
+
+model CartItem {
+  id        String   @id @default(uuid())
+  cartId    String   @map("cart_id")
+  ticketId  String   @map("ticket_id")
+  quantity  Int
+  createdAt DateTime @default(now()) @map("created_at")
+  cart      Cart     @relation(fields: [cartId], references: [id])
+  ticket    Ticket   @relation(fields: [ticketId], references: [id])
+
+  @@map("cart_items")
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  ticketId  String   @map("ticket_id")
+  value     Decimal  @db.Decimal(10, 2)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  ticket Ticket @relation(fields: [ticketId], references: [id])
+
+  @@map("reviews")
+}
+
+model Address {
+  id        String   @id @default(uuid())
+  ticketId  String   @unique @map("ticket_id")
+  city      String
+  state     String
+  country   String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  ticket Ticket @relation(fields: [ticketId], references: [id])
+
+  @@map("addresses")
+}
+
+model Price {
+  id        String   @id @default(uuid())
+  ticketId  String   @unique @map("ticket_id")
+  amount    Decimal  @db.Decimal(10, 2)
+  discount  Decimal  @db.Decimal(10, 2)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  ticket Ticket @relation(fields: [ticketId], references: [id])
+
+  @@map("prices")
+}
