@@ -4,9 +4,9 @@ export interface TicketProps {
   name: string
   description: string
   imageUrl: string
-  amenities: string[]
-  price: Price
-  address: Address
+  amenities?: string[]
+  price?: Price
+  address?: Address
   createdAt: Date
   updatedAt?: Date | null
 }
