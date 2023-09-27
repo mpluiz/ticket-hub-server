@@ -3,7 +3,9 @@
     "@meu-kit/eslint-config/node/node",
     "plugin:vitest-globals/recommended"
   ],
-  "rules": {},
+  "rules": {
+    "prefer-const": "off"
+  },
   "env": {
     "vitest-globals/env": true
   }
