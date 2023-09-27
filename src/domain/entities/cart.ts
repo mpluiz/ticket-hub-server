@@ -1,9 +1,11 @@
-import { Entity, UniqueEntityID, Ticket } from '@/domain/entities'
+import { Entity, UniqueEntityID, CartItem } from '@/domain/entities'
 
 interface CartProps {
-  items: Ticket[]
-  subTotal: number
   total: number
+  subTotal: number
+  items: CartItem[]
+  createdAt: Date
+  updatedAt?: Date | null
 }
 
 export class Cart extends Entity<CartProps> {

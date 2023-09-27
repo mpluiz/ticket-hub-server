@@ -12,4 +12,8 @@ export abstract class Entity<Props> {
   get id(): UniqueEntityID {
     return this._id
   }
+
+  toValue(): Props {
+    return { ...this.props }
+  }
 }
