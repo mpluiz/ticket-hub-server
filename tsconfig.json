@@ -7,7 +7,7 @@
       "@/*": ["src/*"],
       "@tests/*": ["tests/*"]
     },
-    "types": ["vitest/globals"]
+    "types": ["node", "vitest/globals"]
   },
   "include": ["src", "tests", "vitest.config.ts"]
 }
