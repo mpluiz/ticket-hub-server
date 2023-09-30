@@ -16,10 +16,10 @@ model Ticket {
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime? @updatedAt @map("updated_at")
 
-  cartItem CartItem[]
-  review   Review[]
-  price    Price?
-  address  Address?
+  cartItems CartItem[]
+  reviews   Review[]
+  price     Price?
+  address   Address?
 
   @@map("tickets")
 }
@@ -31,7 +31,7 @@ model Cart {
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")
 
-  cartItem CartItem[]
+  cartItems CartItem[]
 
   @@map("carts")
 }
@@ -42,8 +42,9 @@ model CartItem {
   ticketId  String   @map("ticket_id")
   quantity  Int
   createdAt DateTime @default(now()) @map("created_at")
-  cart      Cart     @relation(fields: [cartId], references: [id])
-  ticket    Ticket   @relation(fields: [ticketId], references: [id])
+
+  cart   Cart   @relation(fields: [cartId], references: [id])
+  ticket Ticket @relation(fields: [ticketId], references: [id])
 
   @@map("cart_items")
 }
