@@ -4,7 +4,7 @@ type CartItem {
   cartId: UUID!
   ticketId: UUID!
   quantity: Int!
-  createdAt: String!
+  createdAt: DateTime!
   
   cart: Cart
   ticket: Ticket

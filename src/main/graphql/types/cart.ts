@@ -9,7 +9,7 @@ type Cart {
   total: Int!
   subTotal: Int!
   createdAt: DateTime!
-  updatedAt: String
+  updatedAt: DateTime
   
   cartItems: [CartItem!]
 }
