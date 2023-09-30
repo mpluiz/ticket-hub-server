@@ -2,7 +2,11 @@
   "name": "ticket-hub-server",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
+    "start": "node dist/main/server.js",
     "build": "tsup src",
     "test": "vitest run",
     "test:watch": "vitest",
