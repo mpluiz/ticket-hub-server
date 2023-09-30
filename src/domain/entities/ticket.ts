@@ -1,12 +1,10 @@
-import { Address, Entity, Price, UniqueEntityID } from '@/domain/entities'
+import { Entity, UniqueEntityID } from '@/domain/entities'
 
 export interface TicketProps {
   name: string
   description: string
   imageUrl: string
   amenities?: string[]
-  price?: Price
-  address?: Address
   createdAt: Date
   updatedAt?: Date | null
 }

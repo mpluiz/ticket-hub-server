@@ -1,9 +1,8 @@
-import { Entity, UniqueEntityID, CartItem } from '@/domain/entities'
+import { Entity, UniqueEntityID } from '@/domain/entities'
 
-interface CartProps {
+export interface CartProps {
   total: number
   subTotal: number
-  items: CartItem[]
   createdAt: Date
   updatedAt?: Date | null
 }

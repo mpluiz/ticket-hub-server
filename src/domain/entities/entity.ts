@@ -13,7 +13,7 @@ export abstract class Entity<Props> {
     return this._id
   }
 
-  toValue(): Props {
-    return { ...this.props }
+  toValue(): Props & { id: string } {
+    return { id: this.id.toString(), ...this.props }
   }
 }
