@@ -37,4 +37,8 @@ export class PrismaCartItemRepository implements CartItemRepository {
     const data = PrismaCartItemMapper.toPrisma(cartItem)
     await this.prisma.cartItem.create({ data })
   }
+
+  async delete(id: string): Promise<void> {
+    await this.prisma.cartItem.delete({ where: { id } })
+  }
 }

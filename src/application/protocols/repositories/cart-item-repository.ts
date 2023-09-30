@@ -6,4 +6,5 @@ export abstract class CartItemRepository {
   abstract findManyByTicketId(ticketId: string): Promise<CartItem[]>
   abstract findManyByCartId(cartId: string): Promise<CartItem[]>
   abstract create(cartItem: CartItem): Promise<void>
+  abstract delete(id: string): Promise<void>
 }
