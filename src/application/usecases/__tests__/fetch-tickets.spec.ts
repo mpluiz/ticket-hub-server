@@ -16,7 +16,7 @@ describe('FetchTicketsUseCase', () => {
 
   it('should success to fetch tickets', async () => {
     inMemoryTicketRepository.tickets = [ticket]
-    const response = await sut.execute()
+    const response = await sut.execute({ pagination: { page: 1, perPage: 10 } })
 
     expect(response.isSuccess()).toBe(true)
     expect(response.value?.tickets).toHaveLength(1)
