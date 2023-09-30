@@ -1,0 +1,6 @@
+export * from '@/infra/database/prisma/repositories/prisma-address-repository'
+export * from '@/infra/database/prisma/repositories/prisma-cart-item-repository'
+export * from '@/infra/database/prisma/repositories/prisma-cart-repository'
+export * from '@/infra/database/prisma/repositories/prisma-price-repository'
+export * from '@/infra/database/prisma/repositories/prisma-review-repository'
+export * from '@/infra/database/prisma/repositories/prisma-ticket-repository'
