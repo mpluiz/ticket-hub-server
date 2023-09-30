@@ -26,4 +26,9 @@ export class InMemoryCartItemRepository implements CartItemRepository {
     this.cartItems.findIndex(cartItem => cartItem.ticketId.toString() === ticketId)
     return this.cartItems
   }
+
+  async delete(id: string): Promise<void> {
+    const index = this.cartItems.findIndex(cartItem => cartItem.id.toString() === id)
+    this.cartItems.splice(index, 1)
+  }
 }
