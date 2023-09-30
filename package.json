@@ -16,8 +16,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@apollo/server": "^4.9.3",
     "@prisma/client": "^5.3.1",
-    "graphql": "^16.8.1"
+    "graphql": "^16.8.1",
+    "graphql-scalars": "^1.22.2"
   },
   "devDependencies": {
     "@meu-kit/eslint-config": "^1.1.3",
