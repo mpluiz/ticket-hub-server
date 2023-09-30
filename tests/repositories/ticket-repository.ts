@@ -1,5 +1,6 @@
-import { TicketRepository } from '@/application/protocols'
+import { PaginatedData, RepositoryParams, TicketRepository } from '@/application/protocols'
 import { Ticket } from '@/domain/entities'
+import { PaginationHelper } from '@/utils/pagination'
 
 export class InMemoryTicketRepository implements TicketRepository {
   public tickets: Ticket[] = []
@@ -9,7 +10,10 @@ export class InMemoryTicketRepository implements TicketRepository {
     return this.tickets[index]
   }
 
-  async findMany(): Promise<Ticket[]> {
-    return this.tickets
+  async findMany(params: RepositoryParams): Promise<PaginatedData<Ticket[]>> {
+    return {
+      data: this.tickets,
+      pagination: PaginationHelper.create({ ...params.pagination, totalItems: this.tickets.length })
+    }
   }
 }
