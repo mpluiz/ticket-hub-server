@@ -26,6 +26,7 @@
     "@meu-kit/ts-config": "^1.0.0",
     "@types/node": "^20.4.5",
     "@vitest/coverage-v8": "^0.34.1",
+    "dotenv": "^16.3.1",
     "eslint-plugin-vitest-globals": "^1.4.0",
     "prisma": "^5.3.1",
     "tsup": "^7.2.0",
