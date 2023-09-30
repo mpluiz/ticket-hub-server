@@ -1,1 +1,7 @@
+export * from '@/application/protocols/repositories/address-repository'
+export * from '@/application/protocols/repositories/cart-item-repository'
+export * from '@/application/protocols/repositories/cart-repository'
+export * from '@/application/protocols/repositories/price-repository'
+export * from '@/application/protocols/repositories/repository'
+export * from '@/application/protocols/repositories/review-repository'
 export * from '@/application/protocols/repositories/ticket-repository'
