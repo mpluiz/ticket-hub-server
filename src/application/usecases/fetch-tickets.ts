@@ -1,17 +1,18 @@
-import { IFetchTicketsUseCase } from '@/domain/usecases'
 import { Either, success } from '@/utils/either'
 import { Ticket } from '@/domain/entities'
-import { TicketRepository } from '@/application/protocols'
+import { PaginationParams, TicketRepository } from '@/application/protocols'
+import { PaginationHelper } from '@/utils/pagination'
 
-type FetchTicketsUseCaseResponse = Either<null, { tickets: Ticket[] | null }>
+type FetchTicketsUseCaseRequest = { pagination: PaginationParams }
+type FetchTicketsUseCaseResponse = Either<null, { tickets: Ticket[], pagination: PaginationHelper }>
 
-export class FetchTicketsUseCase implements IFetchTicketsUseCase<any, FetchTicketsUseCaseResponse> {
+export class FetchTicketsUseCase {
   constructor(private ticketRepository: TicketRepository) {
   }
 
-  async execute(): Promise<FetchTicketsUseCaseResponse> {
-    const tickets = await this.ticketRepository.findMany()
+  async execute({ pagination }: FetchTicketsUseCaseRequest): Promise<FetchTicketsUseCaseResponse> {
+    const response = await this.ticketRepository.findMany({ pagination })
 
-    return success({ tickets })
+    return success({ tickets: response.data, pagination: response.pagination })
   }
 }

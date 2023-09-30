@@ -1,2 +1,6 @@
+export * from '@/application/usecases/create-cart'
+export * from '@/application/usecases/create-cart-item'
+export * from '@/application/usecases/fetch-carts'
 export * from '@/application/usecases/fetch-tickets'
+export * from '@/application/usecases/get-cart'
 export * from '@/application/usecases/get-ticket'
