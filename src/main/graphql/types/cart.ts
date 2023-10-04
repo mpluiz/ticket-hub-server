@@ -6,8 +6,8 @@ extend type Query {
 
 type Cart {
   id: UUID!
-  total: Int!
-  subTotal: Int!
+  total: Float!
+  subTotal: Float!
   createdAt: DateTime!
   updatedAt: DateTime
   
