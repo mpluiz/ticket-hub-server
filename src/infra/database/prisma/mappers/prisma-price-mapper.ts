@@ -5,7 +5,8 @@ export class PrismaPriceMapper {
   static toDomain(raw: PrismaPrice): Price {
     return Price.create({
       ticketId: new UniqueEntityID(raw.id),
-      amount: Number(raw.amount),
+      originalValue: Number(raw.originalValue),
+      value: Number(raw.value),
       discount: Number(raw.discount),
       createdAt: raw.createdAt
     }, new UniqueEntityID(raw.id))

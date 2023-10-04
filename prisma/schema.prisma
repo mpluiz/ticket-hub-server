@@ -74,11 +74,12 @@ model Address {
 }
 
 model Price {
-  id        String   @id @default(uuid())
-  ticketId  String   @unique @map("ticket_id")
-  amount    Decimal  @db.Decimal(10, 2)
-  discount  Decimal  @db.Decimal(10, 2)
-  createdAt DateTime @default(now()) @map("created_at")
+  id            String   @id @default(uuid())
+  ticketId      String   @unique @map("ticket_id")
+  discount      Decimal  @db.Decimal(10, 2)
+  originalValue Decimal  @db.Decimal(10, 2)
+  value         Decimal  @db.Decimal(10, 2)
+  createdAt     DateTime @default(now()) @map("created_at")
 
   ticket Ticket @relation(fields: [ticketId], references: [id])
 
