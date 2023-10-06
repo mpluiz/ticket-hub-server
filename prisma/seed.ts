@@ -15,16 +15,19 @@ const images = [
 ]
 
 async function main() {
-  images.map(async (image) => {
+  images.map(async (image, i) => {
+    const date = new Date()
+
     await prisma.ticket.create({
       data: {
-        name,
+        name: `Ticket ${i + 1} ${name}`,
         description,
         imageUrl: image,
         amenities,
         reviews: { create: [{ value: 7 }, { value: 3.4 }, { value: 8.5 }] },
         price: { create: { originalValue: 2351.28, discount: 960, value: 1391.28 } },
-        address: { create: { city: 'GetYourGuide Tours & Tickets Gmbh', state: 'São Paulo', country: 'Brazil' } }
+        address: { create: { city: 'GetYourGuide Tours & Tickets Gmbh', state: 'São Paulo', country: 'Brazil' } },
+        createdAt: new Date(date.getTime() + (i * 10))
       }
     })
   })
