@@ -18,7 +18,7 @@ export class PrismaTicketRepository implements TicketRepository {
     return PrismaTicketMapper.toDomain(ticket)
   }
 
-  async findMany({ pagination: { page, perPage } }: RepositoryParams): Promise<PaginatedData<Ticket[]>> {
+  async findMany({ term, pagination: { page, perPage } }: RepositoryParams): Promise<PaginatedData<Ticket[]>> {
     const count = await this.prisma.ticket.count()
 
     const pagination = PaginationHelper.create({
@@ -28,6 +28,8 @@ export class PrismaTicketRepository implements TicketRepository {
     })
 
     const tickets = await this.prisma.ticket.findMany({
+      where: { name: { contains: term, mode: 'insensitive' } },
+      orderBy: { createdAt: 'desc' },
       skip: pagination.offset,
       take: pagination.perPage
     })

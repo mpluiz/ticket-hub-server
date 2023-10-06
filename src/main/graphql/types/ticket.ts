@@ -2,7 +2,7 @@ export const ticketTypeDefs = `#graphql
 extend type Query {
   ticket(id: UUID!): Ticket
   tickets: [Ticket!]
-  paginatedTickets(pagination: PaginationInput): PaginatedTickets
+  paginatedTickets(searchOptions: SearchOptionsInput): PaginatedTickets
 }
 
 type Ticket {
@@ -23,6 +23,11 @@ type Ticket {
 type PaginatedTickets {
   pageInfo: PageInfo
   tickets: [Ticket!]
+}
+
+input SearchOptionsInput {
+  term: String
+  pagination: PaginationInput
 }
 
 input PaginationInput {

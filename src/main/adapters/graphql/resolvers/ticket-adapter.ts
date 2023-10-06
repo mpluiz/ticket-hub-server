@@ -13,9 +13,9 @@ export class TicketResolverAdapter {
     return GraphqlTicketMapper.toGraphql(response.value?.ticket)
   }
 
-  static async paginatedTickets(_: any, { pagination }: any) {
+  static async paginatedTickets(_: any, { searchOptions: { term, pagination } }: any) {
     const usecase = makeFetchTicketsUseCase()
-    const response = await usecase.execute({ pagination })
+    const response = await usecase.execute({ term, pagination })
 
     if (response.isFailure()) {
       return { tickets: null, pagination: null }

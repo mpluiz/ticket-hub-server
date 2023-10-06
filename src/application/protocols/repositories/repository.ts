@@ -7,6 +7,7 @@ export interface PaginationParams {
 }
 
 export interface RepositoryParams {
+  term: string
   pagination: PaginationParams
 }
 
