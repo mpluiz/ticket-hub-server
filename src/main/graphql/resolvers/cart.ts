@@ -6,6 +6,10 @@ export const cartResolver = {
     carts: CartResolverAdapter.carts
   },
 
+  Mutation: {
+    createCart: CartResolverAdapter.createCart
+  },
+
   Cart: {
     cartItems: ({ id }: any) => CartItemResolverAdapter.byCartId(id)
   }
