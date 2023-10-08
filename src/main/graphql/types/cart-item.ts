@@ -1,4 +1,9 @@
 export const cartItemTypeDefs = `#graphql
+extend type Mutation {
+  createCartItem(data: CreateCartItemInput!): CartItem
+  deleteCartItem(id: UUID!): Boolean!
+}
+
 type CartItem {
   id: UUID!
   cartId: UUID!
@@ -8,5 +13,11 @@ type CartItem {
   
   cart: Cart
   ticket: Ticket
+}
+
+input CreateCartItemInput {
+  cartId: UUID!
+  ticketId: UUID!
+  quantity: Int!
 }
 `

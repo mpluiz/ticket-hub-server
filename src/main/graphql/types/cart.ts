@@ -1,4 +1,8 @@
 export const cartTypeDefs = `#graphql
+extend type Mutation {
+  createCart: Cart
+}
+
 extend type Query {
   cart(id: UUID!): Cart
   carts: [Cart!]
