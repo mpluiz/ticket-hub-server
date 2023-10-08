@@ -2,7 +2,7 @@ import { Either, failure, success } from '@/utils/either'
 import { CartItemRepository } from '@/application/protocols'
 
 type DeleteCartItemUseCaseRequest = { id: string }
-type DeleteCartItemUseCaseResponse = Either<null, boolean>
+type DeleteCartItemUseCaseResponse = Either<boolean, boolean>
 
 export class DeleteCartItemUseCase {
   constructor(private cartItemRepository: CartItemRepository) {}
@@ -13,7 +13,7 @@ export class DeleteCartItemUseCase {
 
       return success(true)
     } catch (error) {
-      return failure(null)
+      return failure(false)
     }
   }
 }
