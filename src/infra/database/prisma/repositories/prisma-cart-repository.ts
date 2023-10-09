@@ -26,4 +26,9 @@ export class PrismaCartRepository implements CartRepository {
     const data = PrismaCartMapper.toPrisma(cart)
     await this.prisma.cart.create({ data })
   }
+
+  async update(cart: Cart): Promise<void> {
+    const data = PrismaCartMapper.toPrisma(cart)
+    await this.prisma.cart.update({ where: { id: data.id }, data })
+  }
 }
