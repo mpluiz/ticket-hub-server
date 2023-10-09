@@ -7,6 +7,7 @@ export class PrismaCartItemMapper {
       {
         cartId: new UniqueEntityID(raw.cartId),
         ticketId: new UniqueEntityID(raw.ticketId),
+        subTotal: Number(raw.subTotal),
         quantity: raw.quantity,
         createdAt: raw.createdAt
       },
@@ -15,11 +16,12 @@ export class PrismaCartItemMapper {
   }
 
   static toPrisma(cartItem: CartItem): Prisma.CartItemUncheckedCreateInput {
-    const { cartId, ticketId, quantity, createdAt } = cartItem.toValue()
+    const { cartId, ticketId, subTotal, quantity, createdAt } = cartItem.toValue()
     return {
       id: cartItem.id.toString(),
       cartId: cartId.toString(),
       ticketId: ticketId.toString(),
+      subTotal,
       quantity,
       createdAt
     }
