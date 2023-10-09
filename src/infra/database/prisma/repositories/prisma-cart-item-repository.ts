@@ -16,6 +16,16 @@ export class PrismaCartItemRepository implements CartItemRepository {
     return PrismaCartItemMapper.toDomain(cartItem)
   }
 
+  async findAlreadyExistsCartItem(cartId: string, ticketId: string): Promise<CartItem | null> {
+    const cartItem = await this.prisma.cartItem.findFirst({ where: { cartId, ticketId } })
+
+    if (!cartItem) {
+      return null
+    }
+
+    return PrismaCartItemMapper.toDomain(cartItem)
+  }
+
   async findManyByCartId(cartId: string): Promise<CartItem[]> {
     const cartItems = await this.prisma.cartItem.findMany({ where: { cartId } })
 
@@ -36,6 +46,11 @@ export class PrismaCartItemRepository implements CartItemRepository {
   async create(cartItem: CartItem): Promise<void> {
     const data = PrismaCartItemMapper.toPrisma(cartItem)
     await this.prisma.cartItem.create({ data })
+  }
+
+  async update(cartItem: CartItem): Promise<void> {
+    const data = PrismaCartItemMapper.toPrisma(cartItem)
+    await this.prisma.cartItem.update({ where: { id: data.id }, data })
   }
 
   async delete(id: string): Promise<void> {
