@@ -7,7 +7,8 @@ export const cartResolver = {
   },
 
   Mutation: {
-    createCart: CartResolverAdapter.createCart
+    createCart: CartResolverAdapter.createCart,
+    recalculateCart: (_: any, { id }: any) => CartResolverAdapter.recalculateCart(id)
   },
 
   Cart: {
