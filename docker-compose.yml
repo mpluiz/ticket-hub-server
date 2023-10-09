@@ -10,3 +10,17 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: ticket-hub
+  server:
+    container_name: ticket-hub-server
+    image: node:18
+    working_dir: /usr/src/ticket-hub-server
+    command: bash -c "npm i && npm run build && npx prisma migrate dev && npx prisma db seed && npm run start"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/ticket-hub?schema=public
+      - GRAPHQL_PORT=4040
+    volumes:
+      - .:/usr/src/ticket-hub-server
+    ports:
+      - "4040:4040"
+    links:
+      - postgres
