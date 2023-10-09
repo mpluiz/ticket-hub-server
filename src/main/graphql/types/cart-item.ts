@@ -8,6 +8,7 @@ type CartItem {
   id: UUID!
   cartId: UUID!
   ticketId: UUID!
+  subTotal: Float!
   quantity: Int!
   createdAt: DateTime!
   
@@ -18,6 +19,7 @@ type CartItem {
 input CreateCartItemInput {
   cartId: UUID!
   ticketId: UUID!
+  subTotal: Float!
   quantity: Int!
 }
 `
