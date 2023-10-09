@@ -27,6 +27,7 @@ CREATE TABLE "cart_items" (
     "id" TEXT NOT NULL,
     "cart_id" TEXT NOT NULL,
     "ticket_id" TEXT NOT NULL,
+    "subTotal" DECIMAL(10,2) NOT NULL,
     "quantity" INTEGER NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 

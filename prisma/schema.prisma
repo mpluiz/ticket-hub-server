@@ -40,6 +40,7 @@ model CartItem {
   id        String   @id @default(uuid())
   cartId    String   @map("cart_id")
   ticketId  String   @map("ticket_id")
+  subTotal  Decimal  @db.Decimal(10, 2)
   quantity  Int
   createdAt DateTime @default(now()) @map("created_at")
 
