@@ -1,6 +1,7 @@
 export const cartTypeDefs = `#graphql
 extend type Mutation {
   createCart: Cart
+  recalculateCart(id: UUID!): Cart
 }
 
 extend type Query {
