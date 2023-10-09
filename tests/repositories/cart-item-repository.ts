@@ -13,6 +13,11 @@ export class InMemoryCartItemRepository implements CartItemRepository {
     return this.cartItems[index]
   }
 
+  async findAlreadyExistsCartItem(cartId: string, ticketId: string): Promise<CartItem | null> {
+    const index = this.cartItems.findIndex(cartItem => cartItem.ticketId.toString() === ticketId && cartItem.cartId.toString() === cartId)
+    return this.cartItems[index]
+  }
+
   async findMany(): Promise<CartItem[]> {
     return this.cartItems
   }
@@ -25,6 +30,11 @@ export class InMemoryCartItemRepository implements CartItemRepository {
   async findManyByTicketId(ticketId: string): Promise<CartItem[]> {
     this.cartItems.findIndex(cartItem => cartItem.ticketId.toString() === ticketId)
     return this.cartItems
+  }
+
+  async update(cartItem: CartItem): Promise<void> {
+    const index = this.cartItems.findIndex(currentCartItem => currentCartItem.id.toString() === cartItem.id.toString())
+    this.cartItems[index] = cartItem
   }
 
   async delete(id: string): Promise<void> {

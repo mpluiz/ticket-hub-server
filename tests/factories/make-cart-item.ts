@@ -9,6 +9,7 @@ export function makeCartItem(override: Partial<CartItemProps> = {}, id?: UniqueE
     cartId: cart.id,
     ticketId: ticket.id,
     quantity: 1,
+    subTotal: 1391.60,
     createdAt: new Date(),
     ...override
   }, id)

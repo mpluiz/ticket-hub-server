@@ -19,6 +19,7 @@ describe('CreateCartItemUseCase', () => {
     const response = await sut.execute({
       cartId: cart.id.toString(),
       ticketId: ticket.id.toString(),
+      subTotal: 1391.60,
       quantity: 1
     })
 

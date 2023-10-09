@@ -16,4 +16,9 @@ export class InMemoryCartRepository implements CartRepository {
   async findMany(): Promise<Cart[]> {
     return this.carts
   }
+
+  async update(cart: Cart): Promise<void> {
+    const index = this.carts.findIndex(currentCart => currentCart.id.toString() === cart.id.toString())
+    this.carts[index] = cart
+  }
 }
