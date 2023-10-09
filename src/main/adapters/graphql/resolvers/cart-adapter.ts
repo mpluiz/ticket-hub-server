@@ -1,5 +1,10 @@
 import { GraphqlCartMapper } from '@/main/graphql/mappers'
-import { makeCreateCartUseCase, makeFetchCartsUseCase, makeGetCartUseCase } from '@/main/factories/usecases'
+import {
+  makeCreateCartUseCase,
+  makeFetchCartsUseCase,
+  makeGetCartUseCase,
+  makeRecalculateCart
+} from '@/main/factories/usecases'
 
 export class CartResolverAdapter {
   static async cart(id: string) {
@@ -26,6 +31,17 @@ export class CartResolverAdapter {
 
     if (response.isFailure()) {
       return null
+    }
+
+    return GraphqlCartMapper.toGraphql(response.value.cart)
+  }
+
+  static async recalculateCart(id: string) {
+    const usecase = makeRecalculateCart()
+    const response = await usecase.execute({ id })
+
+    if (response.isFailure()) {
+      return response.value
     }
 
     return GraphqlCartMapper.toGraphql(response.value.cart)
