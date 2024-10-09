@@ -5,8 +5,8 @@
 
 # TICKET HUB
 
-- [app](https://tickethub.mpluiz.com.br)
-- [server https://ticket-hub-server.onrender.com](https://ticket-hub-server.onrender.com)
+- [app](https://tickethub.marcosluiz.dev)
+- [server](https://ticket-hub-server.onrender.com)
 
 ## Requirements
 - Node `<lts-version>`
